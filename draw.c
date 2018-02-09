@@ -19,16 +19,36 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
   int y = y0;
   int a = y1 - y0;
   int b = x0 - x1;
-  int d = 2*a + b;
-  printf("%d\n", x);
-  printf("%d\n", y);
-  printf("%d\n", a);
-  printf("%d\n", b);
-  printf("%d\n", d);
 
   if(a > 0 && b < 0){
     if(a + b < 0){
-      while x
+      int d = 2 * a + b;
+      while (x < x1){
+	plot(s, c, x, y); 
+	if(d>0){ 
+	  y++;
+	  d += 2 * b;
+	}
+	x++;
+	d += 2 * a;	
+      }
     }
   }
+  
+  else{
+    if(a + b < 0){
+      int d = 2 * a - b;
+      while (x < x1){
+	plot(s, c, x, y); 
+	if(d>0){ 
+	  y--;
+	  d += 2 * b;
+	}
+	x++;
+	d += 2 * a;
+      }
+    }
+  }
+
+  
 }
